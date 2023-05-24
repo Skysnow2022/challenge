@@ -46,3 +46,22 @@ function desencriptar(stringDesencriptada) {
     }
     return stringDesencriptada;
 }
+//Obtenemos el botón de copiar y le agregamos el listener
+const btnCopiar = document.querySelector('.btn-copiar');
+btnCopiar.addEventListener('click', copiarTextoAlPortapapeles);
+
+//Función para copiar el texto al portapapeles
+function copiarTextoAlPortapapeles() {
+  //Obtenemos el texto del campo de texto
+  const mensaje = document.querySelector('.mensaje');
+  const texto = mensaje.value;
+
+  //Copiamos el texto al portapapeles
+  navigator.clipboard.writeText(texto)
+    .then(() => {
+      console.log('Texto copiado al portapapeles');
+    })
+    .catch((error) => {
+      console.error('Error al copiar el texto: ', error);
+    });
+}
